@@ -1,87 +1,161 @@
-Scraping SpecialSkill.id
+# Scraping SpecialSkill.id
 
-Web scraper sederhana menggunakan Python untuk mengumpulkan daftar artikel dari beberapa kategori di SpecialSkill.id
-.
+Web scraper sederhana menggunakan Python untuk mengumpulkan daftar artikel dari beberapa kategori di [SpecialSkill.id](https://specialskill.id/).
 
-Features
-Scraping artikel berdasarkan kategori.
-Mendukung pagination pada halaman kategori.
-Menghindari artikel duplikat berdasarkan URL.
-Mengambil kategori, judul, dan URL artikel.
-Mengekspor hasil scraping ke file CSV.
-Menggunakan requests dan BeautifulSoup.
-Categories
+## Features
+
+- Scraping artikel berdasarkan kategori.
+- Mendukung pagination pada halaman kategori.
+- Menghindari artikel duplikat berdasarkan URL.
+- Mengambil kategori, judul, dan URL artikel.
+- Mengekspor hasil scraping ke file CSV.
+- Menggunakan `Requests` dan `BeautifulSoup`.
+
+## Categories
 
 Scraper mengambil artikel dari beberapa kategori:
 
-Programming
-Machine Learning
-Mobile Development
-Website Development
-Data Analyst
-UI/UX Design
-Graphic Design
-Digital Marketing
-Requirements
-Python 3.9+
-requests
-beautifulsoup4
-Installation
+- Programming
+- Machine Learning
+- Mobile Development
+- Website Development
+- Data Analyst
+- UI/UX Design
+- Graphic Design
+- Digital Marketing
 
-Clone repository:
+## Requirements
 
-git clone https://github.com/USERNAME/SCRAPING-SPECIALSKILL.git
-cd SCRAPING-SPECIALSKILL
+- Python 3.9+
+- `requests`
+- `beautifulsoup4`
 
+## Installation
 
-Buat virtual environment:
+### 1. Clone Repository
 
+```bash
+git clone https://github.com/Fadhailurrahman/scraping-specialskill.git
+cd scraping-specialskill
+```
+
+### 2. Create Virtual Environment
+
+```bash
 python -m venv .venv
+```
 
+### 3. Activate Virtual Environment
 
-Aktifkan virtual environment.
+**Windows:**
 
-Windows:
-
+```bash
 .venv\Scripts\activate
+```
 
+**macOS/Linux:**
 
-macOS/Linux:
-
+```bash
 source .venv/bin/activate
+```
 
+### 4. Install Dependencies
 
-Install dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
-Usage
+## Usage
 
-Jalankan scraper:
+Jalankan scraper dengan perintah:
 
+```bash
 python scraper.py
+```
 
+Setelah proses selesai, hasil scraping akan disimpan secara otomatis sebagai:
 
-Setelah proses selesai, hasil scraping akan disimpan sebagai:
-
+```text
 artikel_special_skill.csv
+```
 
+## Output
 
-CSV memiliki kolom:
+File CSV memiliki struktur sebagai berikut:
 
-Kolom	Deskripsi
-No	Nomor urut artikel
-Kategori	Kategori artikel
-Judul Artikel	Judul artikel
-URL	URL artikel
-Data
+| Kolom | Deskripsi |
+|---|---|
+| `No` | Nomor urut artikel |
+| `Kategori` | Kategori artikel |
+| `Judul Artikel` | Judul artikel |
+| `URL` | URL artikel |
 
-File artikel_special_skill.csv berisi hasil scraping pada saat repository dibuat.
+Contoh:
 
-Karena website sumber dapat berubah, jumlah dan daftar artikel dapat berbeda ketika scraper dijalankan kembali.
+| No | Kategori | Judul Artikel | URL |
+|---:|---|---|---|
+| 1 | Programming | Contoh Judul Artikel | https://specialskill.id/article/... |
+| 2 | Data Analyst | Contoh Judul Artikel | https://specialskill.id/article/... |
 
-Disclaimer
+## Data
+
+File [`artikel_special_skill.csv`](./artikel_special_skill.csv) berisi hasil scraping pada saat repository dibuat.
+
+Karena konten pada website sumber dapat berubah dari waktu ke waktu, jumlah dan daftar artikel yang dihasilkan dapat berbeda ketika scraper dijalankan kembali.
+
+## Project Structure
+
+```text
+scraping-specialskill/
+│
+├── artikel_special_skill.csv
+├── README.md
+├── requirements.txt
+└── scraper.py
+```
+
+## How It Works
+
+Secara sederhana, proses scraping berjalan dengan alur berikut:
+
+```text
+Category URLs
+      ↓
+Request Web Page
+      ↓
+Parse HTML with BeautifulSoup
+      ↓
+Extract Article Data
+      ↓
+Check Duplicate URL
+      ↓
+Handle Pagination
+      ↓
+Collect All Articles
+      ↓
+Export to CSV
+```
+
+Scraper menggunakan URL artikel sebagai identifier untuk mencegah data artikel yang sama tersimpan lebih dari satu kali.
+
+## Limitations
+
+- Struktur HTML website sumber dapat berubah sehingga selector pada scraper mungkin perlu diperbarui.
+- Data disimpan dalam format CSV sehingga belum menggunakan database persistence.
+- Scraper bergantung pada ketersediaan website sumber.
+- Jumlah artikel dapat berubah ketika scraper dijalankan kembali.
+- Belum menggunakan asynchronous requests.
+
+## Disclaimer
 
 Project ini dibuat untuk tujuan pembelajaran dan pengembangan kemampuan web scraping menggunakan Python.
 
-Pastikan penggunaan scraper tetap memperhatikan robots.txt, terms of service, rate limits, dan kebijakan website yang menjadi sumber data.
+Penggunaan scraper harus tetap memperhatikan `robots.txt`, Terms of Service, rate limits, hak cipta, serta kebijakan website yang menjadi sumber data.
+
+Gunakan scraper secara bertanggung jawab dan hindari memberikan beban berlebihan terhadap server website sumber.
+
+## Author
+
+**Moh. Fadhailurrahman**
+
+GitHub: [@Fadhailurrahman](https://github.com/Fadhailurrahman)
